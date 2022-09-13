@@ -8,22 +8,23 @@
  */
 int main(void)
 {
-char s = '0';
+char d = '0';
 
-while (s <= '9')
+while (d <= '9')
 {
-putchar(s);
-s++;
+putchar(d);
+d++;
 }
 
-char a = 'a';
+char c = 'a';
 
-while (a <= 'f')
+while (c <= 'f')
 {
-putchar(a);
-a++;
+putchar(c);
+c++;
 }
 
 putchar('\n');
 return (0);
+
 }
