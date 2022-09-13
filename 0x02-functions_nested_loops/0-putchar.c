@@ -1,13 +1,19 @@
-#include<stdio.h>
+#include "main.h"
+
 /**
- *main - to print putchar
- *Description: print the word of given
- *Return: 0 always
- *
- *
+ * main - Entry point
+ * Return:0
  */
+
 int main(void)
 {
-printf("_putchar");
+char c[10] = "_putchar";
+int i = 0;
+while (i < 9)
+{
+_putchar(c[i]);
+i++;
+}
+_putchar('\n');
 return (0);
 }
