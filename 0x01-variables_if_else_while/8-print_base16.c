@@ -8,20 +8,19 @@
  */
 int main(void)
 {
-char d = '0';
+char s = '0';
+char a = 'a';
 
-while (d <= '9')
+while (s <= '9')
 {
-putchar(d);
-d++;
+putchar(s);
+s++;
 }
 
-char c = 'a';
-
-while (c <= 'f')
+while (a <= 'f')
 {
-putchar(c);
-c++;
+putchar(a);
+a++;
 }
 
 putchar('\n');
