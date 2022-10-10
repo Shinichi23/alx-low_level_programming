@@ -1,81 +1,49 @@
+#include <stdlib.h>
 #include "dog.h"
-
-
 /**
-*_strlen - returns length of
-*a string
-*@str: string to be counted
-*Return: returns length of string
+* new_dog - makes a new struct dog
+* @name: his/her name
+* @age: how old is he
+* @owner: who are you
+* Return: new dog
 */
-int _strlen(char *str)
-{
-int len = 0;
-while (str)
-len++;
 
-return (len);
-}
-
-
-/**
-*_strcopy - copy string pointed by src
-*into dest variable
-*@dest:buffer storing string copy
-*@src: buffer storing string to copy
-*Return:returns copied string
-*/
-char *_strcopy(char *dest, char *src)
-{
-int index = 0;
-
-for (; src[index] ; index++)
-dest[index] = src[index];
-
-dest[index] = '\0';
-return (dest);
-}
-
-
-
-
-/**
-*new_dog - creates a new dog
-*@name: name of new dog
-*@age: age of new dog
-*@owner: owner of new dog
-*Return: returns NULL in case
-*of failure
-*/
 dog_t *new_dog(char *name, float age, char *owner)
 {
-dog_t *doggo;
+unsigned int i, namel, ownerl;
+dog_t *dog;
 
-if (name == NULL || age < 0 || owner == NULL)
+if (name == NULL || owner == NULL)
 return (NULL);
-
-doggo = malloc(sizeof(dog_t));
-if (doggo == NULL)
+dog = malloc(sizeof(dog_t));
+if (dog == NULL)
 return (NULL);
-
-doggo->name = malloc(sizeof(char) * (_strlen(name) + 1));
-if (doggo->name == NULL)
+for (namel = 0; name[namel]; namel++)
+;
+namel++;
+dog->name = malloc(namel * (sizeof(char)));
+if (dog->name == NULL)
 {
-free(doggo);
+free(dog);
 return (NULL);
 }
+for (i = 0; i < namel; i++)
+dog->name[i] = name[i];
 
-doggo->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-if (doggo->owner == NULL)
+dog->age = age;
+
+for (ownerl = 0; owner[ownerl]; ownerl++)
+;
+ownerl++;
+dog->owner = malloc(ownerl * (sizeof(char)));
+if (dog->owner == NULL)
 {
-free(doggo->name);
-free(doggo);
+free(dog->name);
+free(dog);
 return (NULL);
 }
-
-doggo->name = _strcopy(doggo->name, name);
-doggo->age = age;
-doggo->owner = _strcopy(doggo->owner, owner);
-
-return (doggo);
+for (i = 0; i < ownerl; i++)
+dog->owner[i] = owner[i];
+return (dog);
 }
 
